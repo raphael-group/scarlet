@@ -7,9 +7,12 @@ SCARLET is implemented in Python and uses Gurobi for optimization.
 ## Contents
 1. [Setup](#setup) 
 	- [Dependencies](#dependencies)
-	- [Using Gurobi](#usingGurobi)
+	- [Using Gurobi](#usinggurobi)
 2. [Running SCARLET](#runningscarlet)
-3. Example 
+	- [Input](#input)
+	- [Output](#output)
+	- [Usage](#usage)
+3. [Example](#example) 
 
 <a name="setup"></a>
 ## Setup
@@ -36,12 +39,12 @@ Every run of SCARLET uses Gurobi, which requires a valid license pointed to by t
 
 1. **Individual license**. This license can be obtained easily by any academic user with an institutional email. This license is user and machine-specific, meaning that the user needs to acquire a different license for every machine. Assuming the license is stored at `/path/to/gurobi.lic,` the user can easily use it by the following command:
 
-```export GRB_LICENSE_FILE="/path/to/gurobi.lic"```
+	```export GRB_LICENSE_FILE="/path/to/gurobi.lic"```
 
 
 2. **Multi-user license**. This license can be used by multiple users on any machine in a cluster. This license can be obtained freely but needs to be requested by the IT staff of the user's institution. This license is typically used in a machine cluster and requires the following command:
 
-```module load gurobi```
+	```module load gurobi```
 
 <a name="runningscarlet"></a>
 ## Running SCARLET
@@ -97,7 +100,9 @@ SCARLET can be run from the command line as follows.
 python code/scarlet.py [read count file] [copy-number tree file] [output prefix]
 ```
 
-## Example 
+<a name="example"></a>
+## Example
+
 
 Example input is provided in the `example` directory. It can be run as 
 
