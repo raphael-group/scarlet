@@ -54,7 +54,6 @@ Every run of SCARLET uses Gurobi, which requires a valid license pointed to by t
 SCARLET takes as input two files. The first describes the read counts and copy-number profile assignments for each cell. The second describes the copy-number tree and the set of supported losses for each edge in the copy-number tree. 
 
 1. **Read count file**. For each cell, this file describes the copy-number profile assignment and variant and total read counts for *m* mutations. The input file is a comma-separated file, where the first line is the header and rows correspond to cells, with the following format.
-
 	```
 	cell_id, c, [mut1]_v, [mut1]_t, [mut2]_v, [mut2]_t, ... [mutm]_v, [mutm]_t
 	
@@ -82,7 +81,6 @@ Examples of these files can be found in the `example/` directory.
 ### Output Files
 
 1. **Binary mutation matrix file** (`[prefix].B`). This file describes the binary presence (`1`) or absence (`0`) of each mutation in each cell. This is a comma-separated file where the first line is the header and rows correspond to cells, of the following format. 
-2. 
 	```
 	cell_id,[mut1], [mut2], ..., [mutm]
 	
