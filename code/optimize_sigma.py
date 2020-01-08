@@ -51,7 +51,7 @@ def get_optimal_sigma(S, BC, L):
                     if mutation not in L[tuple(edge)]: 
                         valid_tree = False
                     else:
-                        tree_deletions.append(('d{}'.format(t), mutation))
+                        tree_deletions.append(('ANC:{}'.format(t), mutation))
                     
             if not valid_tree: continue
                 

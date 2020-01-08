@@ -19,8 +19,9 @@ def read_in_files(input_file, state_tree_file):
 
     return BC, S, L
 
-def write_out_files(B, T, filename, totalLL):
+def write_out_files(B, B_with_ancestors, T, filename, totalLL):
     B.to_csv('{}.B'.format(filename))
+    B_with_ancestors.to_csv('{}.B_ancestor'.format(filename))
     T.to_csv('{}.T'.format(filename))
 
     with open('{}.LL'.format(filename), 'w') as out:

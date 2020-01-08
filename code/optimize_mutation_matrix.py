@@ -3,9 +3,7 @@ import pandas as pd
 
 from optimize_sigma import get_optimal_sigma
 from probmodels import log_prob_present, log_prob_absent
-#C = {(0,0):1, (0,1):-2, (1,0):3, (1,1):4, (2,0):-2, (2,1):1 }
-#num_cells = 3
-#num_mutations = 2
+
 EPSILON = -0.00001
 
 def solve_model(C):
@@ -20,12 +18,8 @@ def solve_model(C):
 
         Bs = {}
         # Create mutation matrix
-        #print C
-        #print C.index
-        #print C.columns
         for p in C.index:
             for a in C.columns:
-
                 Bs[(p,a)] = m.addVar(vtype=GRB.BINARY, name="b_{}_{}".format(p,a))
                 vals.append((p,a))
 
@@ -109,7 +103,7 @@ def output_with_deletions(C,m):
     print "C COLUMNS", C.columns
     print C 
     for v in C.index:
-        if v.startswith('d'): 
+        if v.startswith('ANC:'):
             for c in C.columns:
                 if C.loc[v][c] == EPSILON: 
                     value =  m.getVarByName("b_{}_{}".format(v, c)).x
@@ -154,7 +148,7 @@ def calculate_C(c, sigmas, DPs, BC):
         child, desc = D
         print child
         d = pd.DataFrame([[desc_scores(desc[a]) for a in mixed_muts]], columns = mixed_muts,\
-            index = ['d{}'.format(child)])
+            index = ['ANC:{}'.format(child)])
         C = C.append(d)
 
         
@@ -202,14 +196,12 @@ def assemble_mutation_matrix(Bs,sigmas, BC, mutations):
         B = Bs[i]
         for p in B.index:
             v = B.loc[p]
-            if p.startswith('d'): continue
+            if p.startswith('ANC:'): continue
             for a in B.columns:
                 B_tot.loc[p][a] = int(v[a])
 
         status = sigmas.loc[i]
-        #print "Cells in copy state {}".format(i)
         cells = BC[BC['c'] == i].index
-        #print cells
 
         for cell in cells:
             for a in status.index:
@@ -219,6 +211,44 @@ def assemble_mutation_matrix(Bs,sigmas, BC, mutations):
                     B_tot.loc[cell][a] = 1
 
     return B_tot
+
+def assemble_mutation_matrix_with_ancestors(Bs,sigmas, BC, mutations):
+
+    
+    index = []
+    for i in Bs:
+            index+=Bs[i].index.tolist()
+            print Bs[i].index
+
+
+    # Bs give partial information and sigmas assemble the rest
+    B_tot = pd.DataFrame(columns = ["CN"]+ mutations, index = index)
+    #B_tot = pd.DataFrame(columns = mutations, index = index)
+
+    for i in Bs:
+
+        B = Bs[i]
+        for p in B.index:
+            v = B.loc[p]
+            #if p.startswith('d'): continue
+            for a in B.columns:
+                B_tot.loc[p][a] = int(v[a])
+
+        status = sigmas.loc[i]
+        #cells = BC[BC['c'] == i].index
+        cells = B.index
+
+        for cell in cells:
+            #B_tot["CN"]=i
+            B_tot.loc[cell]['CN'] = i
+            for a in status.index:
+                if status[a] == 'Absent':
+                    B_tot.loc[cell][a] = 0
+                elif status[a] == 'Present':
+                    B_tot.loc[cell][a] = 1
+    return B_tot
+
+
 
   
 if __name__ == '__main__':

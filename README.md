@@ -23,13 +23,14 @@ SCARLET is implemented in Python and uses Gurobi for optimization.
 
 - Python 2.7 ([anaconda distribution](https://www.anaconda.com/distribution/) recommended)  
 - Gurobi 
+- GraphViz (for tree visualization)
 
 ### SCARLET Setup
 To use SCARLET, first clone the SCARLET repository locally. 
 
 ```git clone git@github.com:raphael-group/scarlet.git```
 
-SCARLET is then run using Python and doesn't require any compilation. SCARLET does however require an installation and a valid lincense for the Gurobi Optimizier. See the following section for details. 
+SCARLET uses Python and doesn't require any compilation. SCARLET does however require an installation and a valid lincense for the Gurobi Optimizier. See the following section for details. 
 
 <a name="usinggurobi"></a>
 ### Using Gurobi
@@ -80,6 +81,8 @@ Examples of these files can be found in the `example/` directory.
 <a name="output"></a>
 ### Output Files
 
+Scarlet produces several output files, as detailed below. In addition to these, Scarlet produces several auxiliary files (including [prefix].B_ancestor and [prefix].dot) that are used for graphing purposes and not detailed below. 
+
 1. **Binary mutation matrix file** (`[prefix].B`). This file describes the binary presence (`1`) or absence (`0`) of each mutation in each cell. This is a comma-separated file where the first line is the header and rows correspond to cells, of the following format. 
 	```
 	cell_id,[mut1], [mut2], ..., [mutm]
@@ -90,13 +93,24 @@ Examples of these files can be found in the `example/` directory.
 
 3. **Mutation matrix likelihood file** (`[prefix].LL`). This file contains a single line which gives the log-likelihood of the mutation matrix. 
 <a name="usage"></a>
+
+4. **Tree edgelist** (`[prefix].edgelist`). This file contains a list of edges in the tree inferred by SCARLET. In this file, there are three types of vertices. Observed cells are prefixed by "CELL:" and labeled by their id (as given in the read count file). Internal vertices that correspond to the roots of a copy-number state subtree are prefixed by "ROOT:", and labeled by the copy-number state.  Internal vertices are prefixed by "MUT:" and labeled by the mutation on the incoming edge to that vertex. All vertex names are followed by the assigned copy-number state in parenthesis.  
+
 ### Usage
 
 SCARLET can be run from the command line as follows.
 
 ```
-python code/scarlet.py [read count file] [copy-number tree file] [output prefix]
+python code/scarlet.sh [read count file] [copy-number tree file] [output prefix] [(OPTIONAL) plotting_style]
 ```
+
+Plotting style controls how the leaves will be displayed in the plot of the output tree. It has three options.
+
+- "ALL": Plot all observed cells as leaves
+
+- "COUNT": Plot the number of observed cells attached to each inner vertex
+
+- "NONE": Plot only the mutation tree, no leaves
 
 <a name="example"></a>
 ## Example

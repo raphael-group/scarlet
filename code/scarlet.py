@@ -1,6 +1,6 @@
 from fileio import read_in_files, write_out_files
 from optimize_sigma import get_optimal_sigma
-from optimize_mutation_matrix import get_descendent_profiles, calculate_C, solve_model, assemble_mutation_matrix
+from optimize_mutation_matrix import get_descendent_profiles, calculate_C, solve_model, assemble_mutation_matrix, assemble_mutation_matrix_with_ancestors
 import pandas as pd
 from probmodels import compute_LL_solution 
 
@@ -11,7 +11,7 @@ def correct_ternary_matrix(B, S, BC, deletions):
     for deletion in deletions:
         print "  ----", deletion
         child, mut = deletion
-        child = int(child[1:])
+        child = int(child.replace('ANC:', ''))
         # calculate the set of copy-number states affected by the deletion
         # not the most efficient way to do this but S should be small
         set_states = [child]
@@ -54,6 +54,7 @@ def main():
 
 
     result = assemble_mutation_matrix(Bs, sigmas, BC, mutations)
+    result_with_ancestors = assemble_mutation_matrix_with_ancestors(Bs, sigmas, BC, mutations)
 
     ternary = result.copy()
     for deletion in all_deletions:
@@ -61,7 +62,7 @@ def main():
 
 
     solutionLL = compute_LL_solution(BC, result, mutations)
-    write_out_files(result, ternary, output_file, solutionLL)
+    write_out_files(result, result_with_ancestors, ternary, output_file, solutionLL)
 
 
 
