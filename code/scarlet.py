@@ -7,9 +7,9 @@ from probmodels import compute_LL_solution
 import sys
 def correct_ternary_matrix(B, S, BC, deletions):
     T = B.copy()
-
+    
     for deletion in deletions:
-        print "  ----", deletion
+        print("  ----", deletion)
         child, mut = deletion
         child = int(child.replace('ANC:', ''))
         # calculate the set of copy-number states affected by the deletion
@@ -23,10 +23,9 @@ def correct_ternary_matrix(B, S, BC, deletions):
 
         # This is the set of states where the mutation has been deleted. Thus it gets set to be
         # a two in the output data
-
+        
         cells = BC[BC['c'].apply(lambda x: x in set_states)].index
-        T[mut] = T.apply(lambda x: x if x.name not in cells else 2 , axis=1)
-
+        T[mut] = T.apply(lambda x: x if x.name not in cells else 2 , axis=1)[mut]
     return T
 
 def main():
@@ -50,7 +49,7 @@ def main():
         Bs[i]=B
         all_deletions += deletions
 
-    print "All DELETIONS", all_deletions
+    print("All DELETIONS", all_deletions)
 
 
     result = assemble_mutation_matrix(Bs, sigmas, BC, mutations)

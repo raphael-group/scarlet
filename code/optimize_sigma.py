@@ -25,7 +25,7 @@ def get_optimal_sigma(S, BC, L):
     subtrees = enum_all_subtrees(num_states, S)
 
     sigmas = {}
-    print L
+    print(L)
 
     deletions = []
     for mutation in mutations:
@@ -66,8 +66,12 @@ def get_optimal_sigma(S, BC, L):
         sigmas[mutation] = max_sigma
 
     sigma_new = pd.DataFrame(sigmas)
-    print "SIGMA"
-    print sigma_new
+
+    # Reindex columns of dataframe to be in alphabetical order
+    sigma_new = sigma_new.reindex(sorted(sigma_new.columns), axis=1)
+
+    print("SIGMA")
+    print(sigma_new)
 
     return sigma_new, deletions
 
@@ -89,7 +93,7 @@ def log_prob_sigma(V,T,C,sigma):
 
     log_prob = 0
     for i,R in enumerate(zip(V,T,C)):
-        # print '-------'
+        # print('-------')
         v,t,c = R
 
         status = sigma[c]
@@ -136,7 +140,7 @@ if __name__ == "__main__":
 
     # TEST
 
-    print "Testing Opitimize Sigma"
+    print("Testing Opitimize Sigma")
     input_file = "test_data/BC.csv"
     state_tree = "test_data/S.csv"
     BC = pd.read_csv(input_file)
@@ -148,16 +152,16 @@ if __name__ == "__main__":
     with open(state_tree) as f:
         for line in f:
             line_split = line.strip().split(',')
-            edge = map(int, line_split[:2])
+            edge = list(map(int, line_split[:2]))
             S.append(edge)
             try: 
                 L[tuple(edge)] = line_split[2:]
             except:
                 L[tuple(edge)] = []
-    print "Input data"
-    print "B,C"
-    print BC
-    print "State tree S"
-    print S
-    print "Result"
-    print get_optimal_sigma(S,BC)
+    print("Input data")
+    print("B,C")
+    print(BC)
+    print("State tree S")
+    print(S)
+    print("Result")
+    print(get_optimal_sigma(S,BC))
