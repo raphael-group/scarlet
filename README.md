@@ -21,7 +21,7 @@ SCARLET is implemented in Python and uses Gurobi for optimization.
 <a name="dependencies"></a>
 ### Dependencies
 
-- Python 2.7 ([anaconda distribution](https://www.anaconda.com/distribution/) recommended)  
+- ~~Python 2.7~~ Python 3 since last commit ([anaconda distribution](https://www.anaconda.com/distribution/) recommended)  
 - Gurobi 
 - GraphViz (for tree visualization)
 
