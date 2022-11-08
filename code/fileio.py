@@ -10,7 +10,7 @@ def read_in_files(input_file, state_tree_file):
     with open(state_tree_file) as f:
         for line in f:
             line_split = line.strip().split(',')
-            edge = map(int, line_split[:2])
+            edge = list(map(int, line_split[:2]))
             S.append(edge)
             try: 
                 L[tuple(edge)] = line_split[2:]

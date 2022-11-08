@@ -81,13 +81,13 @@ def solve_model(C):
                 try:
                     p,a = v.varName.split('_')[1:]
                 except:
-                    print v.varName
+                    print(v.varName)
                     raise
                 B.loc[p][a] = v.x
 
         
-        print "Optimized B --------------------"
-        print B
+        print("Optimized B --------------------")
+        print(B)
 
         deletions = output_with_deletions(C,m)
         return B, deletions
@@ -100,17 +100,17 @@ def solve_model(C):
 
 def output_with_deletions(C,m):
     deletions = []
-    print "C COLUMNS", C.columns
-    print C 
+    print("C COLUMNS", C.columns)
+    print(C)
     for v in C.index:
         if v.startswith('ANC:'):
             for c in C.columns:
                 if C.loc[v][c] == EPSILON: 
                     value =  m.getVarByName("b_{}_{}".format(v, c)).x
                     if value == 1: 
-                        print "DELETION DETECTED", v,c
+                        print("DELETION DETECTED", v,c)
                         deletions.append((v,c))
-                    print "---------------------------------------------------------------- EPSILON"
+                    print("---------------------------------------------------------------- EPSILON")
     return deletions
     #raise Exception()
 
@@ -127,26 +127,26 @@ def calculate_C(c, sigmas, DPs, BC):
         C[a] = BC[BC['c']==c].apply(lambda x: calc_c_observed_cell(x['{}_v'.format(a)], \
                x['{}_t'.format(a)]), axis=1)
     
-    print "MIXED MUTS FOR STATE {}: {}".format(c, mixed_muts)
+    print("MIXED MUTS FOR STATE {}: {}".format(c, mixed_muts))
     def desc_scores(v):
-        print v
+        print(v)
         if v == 1: return 100000
         elif v == 0: return -100000
         else: 
             global EPSILON
-            print "------------------------------", EPSILON
+            print("------------------------------", EPSILON)
             return EPSILON
     
 
     try:
         descs = DPs[c]
-        print "----------------- DESCS", descs
+        print("----------------- DESCS", descs)
     except KeyError:
         descs=[]
 
     for i,D in enumerate(descs):
         child, desc = D
-        print child
+        print(child)
         d = pd.DataFrame([[desc_scores(desc[a]) for a in mixed_muts]], columns = mixed_muts,\
             index = ['ANC:{}'.format(child)])
         C = C.append(d)
@@ -160,27 +160,27 @@ def calc_c_observed_cell(v,t):
 
 def get_descendent_profiles(sigmas, mutations, S, L):
     DPs = {}
-    print L
+    print(L)
     for edge in S:
         parent, child = edge
-        print edge, L[tuple(edge)]
+        print(edge, L[tuple(edge)])
         child_status = {m:sigmas[m][child] for m in mutations}
 
         parent_status = {m:sigmas[m][parent] for m in mutations}
 
-        print "child status", child_status
-        print "parent status", parent_status
+        print("child status", child_status)
+        print("parent status", parent_status)
         child_founder_profile = {m:1 if child_status[m] == 'Present' and parent_status[m] in ['Mixed', 'Present'] \
                                  else 0 for m in mutations}
         descendent_profile = {m:1 if child_founder_profile[m] == 1 else '?' if m in L[tuple(edge)] \
                               and parent_status[m] in ['Mixed', 'Present'] else 0 for m in mutations}
 
-        print [descendent_profile[v] for v in descendent_profile]
+        print([descendent_profile[v] for v in descendent_profile])
         if parent not in DPs:
             DPs[parent] = []
         DPs[parent].append((child, descendent_profile)) 
-        #print "DPS"
-        #print (child, descendent_profile)
+        #print("DPS")
+        #print(child, descendent_profile)
 
     return DPs 
 
@@ -188,8 +188,8 @@ def assemble_mutation_matrix(Bs,sigmas, BC, mutations):
 
     # Bs give partial information and sigmas assemble the rest
     B_tot = pd.DataFrame(columns = mutations, index = BC.index)
-    #print mutations
-    #print Bs
+    #print(mutations)
+    #print(Bs)
 
     for i in Bs:
 
@@ -218,7 +218,7 @@ def assemble_mutation_matrix_with_ancestors(Bs,sigmas, BC, mutations):
     index = []
     for i in Bs:
             index+=Bs[i].index.tolist()
-            print Bs[i].index
+            print(Bs[i].index)
 
 
     # Bs give partial information and sigmas assemble the rest
@@ -270,4 +270,4 @@ if __name__ == '__main__':
 
     B = solve_model(C)
 
-    #print B
+    #print(B)
