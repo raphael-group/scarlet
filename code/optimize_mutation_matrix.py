@@ -15,6 +15,8 @@ def solve_model(C):
         vals = []
         # Create a new model
         m = Model("mip1")
+        # Add Solver Time Limit
+        m.setParam('TimeLimit', 5*60)
 
         Bs = {}
         # Create mutation matrix
@@ -22,7 +24,7 @@ def solve_model(C):
             for a in C.columns:
                 Bs[(p,a)] = m.addVar(vtype=GRB.BINARY, name="b_{}_{}".format(p,a))
                 vals.append((p,a))
-
+        
         for i,a in enumerate(C.columns):
             for b in C.columns[i+1:]:
 
@@ -79,7 +81,7 @@ def solve_model(C):
         for v in m.getVars():
             if v.varName.startswith('b'):
                 try:
-                    p,a = v.varName.split('_')[1:]
+                    p,a = v.varName.split('_', 2)[1:]
                 except:
                     print(v.varName)
                     raise
@@ -127,6 +129,7 @@ def calculate_C(c, sigmas, DPs, BC):
         C[a] = BC[BC['c']==c].apply(lambda x: calc_c_observed_cell(x['{}_v'.format(a)], \
                x['{}_t'.format(a)]), axis=1)
     
+
     print("MIXED MUTS FOR STATE {}: {}".format(c, mixed_muts))
     def desc_scores(v):
         print(v)
@@ -143,15 +146,15 @@ def calculate_C(c, sigmas, DPs, BC):
         print("----------------- DESCS", descs)
     except KeyError:
         descs=[]
+    
 
     for i,D in enumerate(descs):
         child, desc = D
-        print(child)
+        #print(child)
         d = pd.DataFrame([[desc_scores(desc[a]) for a in mixed_muts]], columns = mixed_muts,\
             index = ['ANC:{}'.format(child)])
         C = C.append(d)
 
-        
     #C = C.reset_index(drop = True)
     return C
         
@@ -259,7 +262,7 @@ if __name__ == '__main__':
     input_file = "test_data/BC.csv"
     state_tree = "test_data/S.csv"
     BC, S, L = read_in_files(input_file, state_tree)
-    mutations = set(sorted([v.split('_')[0] for v in BC.columns[1:]]))
+    mutations = set(sorted([v.rsplit('_', 1)[0] for v in BC.columns[1:]]))
 
     sigmas = get_optimal_sigma(S,BC)
 

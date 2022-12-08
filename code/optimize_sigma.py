@@ -1,11 +1,11 @@
-
+from itertools import chain
 from probmodels import log_prob_absent, log_prob_present, log_prob_mixed
 import pandas as pd
 
 ###
 #   Calculates the optimal sigma assignments for all mutations given state tree S
 ###
-def get_optimal_sigma(S, BC, L):
+def get_optimal_sigma(S, BC, L, SNP):
     """
     For all mutations calculates the optimal sigma assignment
     S -- edgelist representation of copy-number state tree
@@ -19,11 +19,12 @@ def get_optimal_sigma(S, BC, L):
     copy-number states, and entries in {'Absent', 'Present', 'Mixed'}
 
     """
-    mutations = set(sorted([v.split('_')[0] for v in BC.columns[1:]]))
+    mutations = set(sorted([v.rsplit('_', 1)[0] for v in BC.columns[1:]]))
     C = list(BC['c'])
-    num_states = len(set(C))
+    #num_states = len(set(C))
+    num_states = len(set(chain(*S)))
     subtrees = enum_all_subtrees(num_states, S)
-
+    print(subtrees)
     sigmas = {}
     print(L)
 
@@ -32,15 +33,17 @@ def get_optimal_sigma(S, BC, L):
         max_value = float('-inf')
         max_sigma = None
         max_deletions = None
+
         V = list(BC['{}_v'.format(mutation)])
         T = list(BC['{}_t'.format(mutation)])
+        
         for subtree in subtrees:
 
             status1 = ['Mixed' if i == subtree[0] else 'Present' if i in subtree[1:] else 'Absent' for i in range(num_states)]
-            
             # S is the edge list
             # For every edge, I need to check that if I go from present to absent
             # then there is an allowed loss
+            
             valid_tree = True
             tree_deletions = []
             for edge in S:
@@ -52,18 +55,22 @@ def get_optimal_sigma(S, BC, L):
                         valid_tree = False
                     else:
                         tree_deletions.append(('ANC:{}'.format(t), mutation))
-                    
+            
             if not valid_tree: continue
                 
             p1 = log_prob_sigma(V,T,C, status1)
-
             if p1 > max_value:
                 max_value = p1
                 max_sigma = status1
                 max_deletions = tree_deletions
-    
+        
         deletions += max_deletions
         sigmas[mutation] = max_sigma
+    
+    # Converted all SNP mutation 0 state sigma value to Present to account for Germline Mutations
+    for mutation in SNP:
+        if mutation in sigmas.keys():
+            sigmas[mutation][0] = 'Present'
 
     sigma_new = pd.DataFrame(sigmas)
 
