@@ -16,7 +16,7 @@ def solve_model(C):
         # Create a new model
         m = Model("mip1")
         # Add Solver Time Limit
-        m.setParam('TimeLimit', 5*60)
+        m.setParam('TimeLimit', 5*60*60)
 
         Bs = {}
         # Create mutation matrix
