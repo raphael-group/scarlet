@@ -103,6 +103,7 @@ def log_prob_sigma(V,T,C,sigma):
         # print('-------')
         v,t,c = R
 
+
         status = sigma[c]
         if status == 'Absent':
             log_prob += log_prob_absent(v,t)

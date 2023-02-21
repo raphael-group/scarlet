@@ -1,19 +1,20 @@
 import pandas as pd
 
 PROB_SEQ_ERROR = 0.001
-BETABINOM_ALPHA = 1.0
-BETABINOM_BETA = 1.0
+ADO_PRECISION = 15
+BETABINOM_ALPHA = PROB_SEQ_ERROR * ADO_PRECISION
+BETABINOM_BETA = (1 - PROB_SEQ_ERROR) * ADO_PRECISION
 
 from scipy.stats import betabinom, binom
 import math
 # Calculating the optimal sigma
 
 def log_prob_absent(v,t):
-    prob = binom.logpmf(v,t,PROB_SEQ_ERROR)
+    prob = betabinom.logpmf(v,t, BETABINOM_ALPHA, BETABINOM_BETA)
     return prob
 
 def log_prob_present(v,t):
-    prob = math.log(betabinom.pmf(v, t, BETABINOM_ALPHA, BETABINOM_BETA))
+    prob = betabinom.logpmf(v, t, 1, 1)
     return prob
 
 def log_prob_mixed(v,t):
