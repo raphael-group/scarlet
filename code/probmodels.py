@@ -14,7 +14,7 @@ def log_prob_absent(v,t):
     return prob
 
 def log_prob_present(v,t):
-    prob = betabinom.logpmf(v, t, 1, 1)
+    prob = math.log(betabinom.pmf(v, t, BETABINOM_ALPHA, BETABINOM_BETA))
     return prob
 
 def log_prob_mixed(v,t):

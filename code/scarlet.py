@@ -58,7 +58,6 @@ def main():
         all_deletions += deletions
 
     print("All DELETIONS", all_deletions)
-    
 
     result = assemble_mutation_matrix(Bs, sigmas, BC, mutations)
     result_with_ancestors = assemble_mutation_matrix_with_ancestors(Bs, sigmas, BC, mutations)

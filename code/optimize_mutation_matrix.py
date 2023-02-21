@@ -147,7 +147,6 @@ def calculate_C(c, sigmas, DPs, BC):
         C[a] = BC[BC['c']==c].apply(lambda x: calc_c_observed_cell(x['{}_v'.format(a)], \
                x['{}_t'.format(a)]), axis=1)
     
-
     print("MIXED MUTS FOR STATE {}: {}".format(c, mixed_muts))
     def desc_scores(v):
         print(v)
@@ -199,6 +198,9 @@ def get_descendent_profiles(sigmas, mutations, S, L):
         if parent not in DPs:
             DPs[parent] = []
         DPs[parent].append((child, descendent_profile)) 
+        #print("DPS")
+        #print(child, descendent_profile)
+
 
     return DPs 
 
@@ -286,5 +288,4 @@ if __name__ == '__main__':
     C = calculate_C(1, sigmas, DPs)
 
     B = solve_model(C)
-    
     #print(B)
