@@ -101,7 +101,7 @@ Scarlet produces several output files, as detailed below. In addition to these, 
 SCARLET can be run from the command line as follows.
 
 ```
-python code/scarlet.sh [read count file] [copy-number tree file] [output prefix] [(OPTIONAL) plotting_style]
+bash code/scarlet.sh [read count file] [copy-number tree file] [output prefix] [(OPTIONAL) plotting_style]
 ```
 
 Plotting style controls how the leaves will be displayed in the plot of the output tree. It has three options.
@@ -119,7 +119,7 @@ Plotting style controls how the leaves will be displayed in the plot of the outp
 Example input is provided in the `example` directory. It can be run as 
 
 ```
-python code/scarlet.py example/read_counts.csv example/tree.csv example/output
+bash code/scarlet.sh example/read_counts.csv example/tree.csv example/output ALL
 ```
 
 
