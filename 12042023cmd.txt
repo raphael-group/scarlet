@@ -21,3 +21,517 @@ file:.git/config        branch.master.remote=origin
 file:.git/config        branch.master.merge=refs/heads/master
 file:.git/config        user.name=CSTE7007
 file:.git/config        user.email=mikparadox@outlook.com
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git add .
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git commit -m "Added 12042023cmd.txt as history" 
+[master 4f52c8d] Added 12042023cmd.txt as history
+ 1 file changed, 23 insertions(+)
+ create mode 100644 12042023cmd.txt
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 791 bytes | 791.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/CSTE7007/scarlet.git
+   120219d..4f52c8d  master -> master
+
+
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ bash code/scarlet.sh example/read_counts.csv example/tree.csv example/output12042023ALL ALL
+{(0, 2): ['i', 'p', 'q'], (0, 1): ['d'], (0, 3): ['c', 'e', 'l', 'm', 's', 't']}
+SIGMA
+         a        b        c        d        e        f  ...       o       p       q       r       s       t
+0    Mixed    Mixed    Mixed    Mixed    Mixed    Mixed  ...  Absent  Absent  Absent  Absent  Absent  Absent
+1  Present  Present  Present  Present  Present  Present  ...  Absent  Absent  Absent  Absent  Absent  Absent
+2  Present  Present  Present  Present  Present  Present  ...   Mixed   Mixed   Mixed  Absent  Absent  Absent
+3  Present  Present  Present  Present   Absent  Present  ...  Absent  Absent  Absent   Mixed   Mixed   Mixed
+
+[4 rows x 20 columns]
+{(0, 2): ['i', 'p', 'q'], (0, 1): ['d'], (0, 3): ['c', 'e', 'l', 'm', 's', 't']}
+[0, 2] ['i', 'p', 'q']
+child status {'a': 'Present', 'b': 'Present', 'c': 'Present', 'd': 'Present', 'e': 'Present', 'f': 'Present', 'g': 'Absent', 'h': 'Absent', 'i': 'Absent', 'j': 'Absent', 'k': 'Absent', 'l': 'Absent', 'm': 'Mixed', 'n': 'Mixed', 'o': 'Mixed', 'p': 'Mixed', 'q': 'Mixed', 'r': 'Absent', 's': 'Absent', 't': 'Absent'}
+parent status {'a': 'Mixed', 'b': 'Mixed', 'c': 'Mixed', 'd': 'Mixed', 'e': 'Mixed', 'f': 'Mixed', 'g': 'Mixed', 'h': 'Absent', 'i': 'Absent', 'j': 'Absent', 'k': 'Absent', 'l': 'Absent', 'm': 'Absent', 'n': 'Absent', 'o': 'Absent', 'p': 'Absent', 'q': 'Absent', 'r': 'Absent', 's': 'Absent', 't': 'Absent'}
+[1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 1] ['d']
+child status {'a': 'Present', 'b': 'Present', 'c': 'Present', 'd': 'Present', 'e': 'Present', 'f': 'Present', 'g': 'Present', 'h': 'Mixed', 'i': 'Mixed', 'j': 'Mixed', 'k': 'Mixed', 'l': 'Mixed', 'm': 'Absent', 'n': 'Absent', 'o': 'Absent', 'p': 'Absent', 'q': 'Absent', 'r': 'Absent', 's': 'Absent', 't': 'Absent'}
+parent status {'a': 'Mixed', 'b': 'Mixed', 'c': 'Mixed', 'd': 'Mixed', 'e': 'Mixed', 'f': 'Mixed', 'g': 'Mixed', 'h': 'Absent', 'i': 'Absent', 'j': 'Absent', 'k': 'Absent', 'l': 'Absent', 'm': 'Absent', 'n': 'Absent', 'o': 'Absent', 'p': 'Absent', 'q': 'Absent', 'r': 'Absent', 's': 'Absent', 't': 'Absent'}
+[1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+[0, 3] ['c', 'e', 'l', 'm', 's', 't']
+child status {'a': 'Present', 'b': 'Present', 'c': 'Present', 'd': 'Present', 'e': 'Absent', 'f': 'Present', 'g': 'Present', 'h': 'Absent', 'i': 'Absent', 'j': 'Absent', 'k': 'Absent', 'l': 'Absent', 'm': 'Absent', 'n': 'Absent', 'o': 'Absent', 'p': 'Absent', 'q': 'Absent', 'r': 'Mixed', 's': 'Mixed', 't': 'Mixed'}
+parent status {'a': 'Mixed', 'b': 'Mixed', 'c': 'Mixed', 'd': 'Mixed', 'e': 'Mixed', 'f': 'Mixed', 'g': 'Mixed', 'h': 'Absent', 'i': 'Absent', 'j': 'Absent', 'k': 'Absent', 'l': 'Absent', 'm': 'Absent', 'n': 'Absent', 'o': 'Absent', 'p': 'Absent', 'q': 'Absent', 'r': 'Absent', 's': 'Absent', 't': 'Absent'}
+[1, 1, 1, 1, '?', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+MIXED MUTS FOR STATE 0: ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+----------------- DESCS [(2, {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 0, 'h': 0, 'i': 0, 'j': 0, 'k': 0, 'l': 0, 'm': 0, 'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0, 's': 0, 't': 0}), (1, {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': 1, 'f': 1, 'g': 1, 'h': 0, 'i': 0, 'j': 0, 'k': 0, 'l': 0, 'm': 0, 'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0, 's': 0, 't': 0}), (3, {'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': '?', 'f': 1, 'g': 1, 'h': 0, 'i': 0, 'j': 0, 'k': 0, 'l': 0, 'm': 0, 'n': 0, 'o': 0, 'p': 0, 'q': 0, 'r': 0, 's': 0, 't': 0})]
+2
+1
+1
+1
+1
+1
+1
+0
+/home/user/Desktop/12042023/ForkingScarlet/scarlet/code/optimize_mutation_matrix.py:152: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  C = C.append(d)
+1
+1
+1
+1
+1
+1
+1
+1
+/home/user/Desktop/12042023/ForkingScarlet/scarlet/code/optimize_mutation_matrix.py:152: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  C = C.append(d)
+3
+1
+1
+1
+1
+?
+------------------------------ -1e-05
+1
+1
+/home/user/Desktop/12042023/ForkingScarlet/scarlet/code/optimize_mutation_matrix.py:152: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  C = C.append(d)
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-01-24
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, instruction set [SSE2|AVX]
+Thread count: 4 physical cores, 4 logical processors, using up to 4 threads
+
+Optimize a model with 4116 rows, 1183 columns and 10206 nonzeros
+Model fingerprint: 0x8320c66d
+Variable types: 0 continuous, 1183 integer (1183 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [1e-05, 1e+05]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0000000
+Presolve time: 0.02s
+Presolved: 4116 rows, 1183 columns, 10206 nonzeros
+Variable types: 0 continuous, 1183 integer (1183 binary)
+
+Root relaxation: objective 1.922908e+06, 494 iterations, 0.01 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    1922907.9428 1922907.94  0.00%     -    0s
+
+Explored 1 nodes (494 simplex iterations) in 0.04 seconds (0.02 work units)
+Thread count was 4 (of 4 available processors)
+
+Solution count 2: 1.92291e+06 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.922907942829e+06, best bound 1.922907942829e+06, gap 0.0000%
+Optimized B --------------------
+         a    b    c    d    e    f    g
+0      1.0  1.0  1.0  1.0  1.0  0.0  0.0
+1      1.0  0.0  0.0  1.0  1.0  0.0 -0.0
+2      1.0  1.0  1.0  1.0  1.0  0.0 -0.0
+3      1.0  1.0  1.0  1.0  1.0  1.0  0.0
+4      1.0  1.0  1.0  1.0  1.0  0.0 -0.0
+5      1.0  1.0  0.0  1.0  1.0  0.0 -0.0
+6      1.0  1.0  1.0  1.0  1.0  0.0 -0.0
+7      1.0  1.0  1.0  1.0  1.0  1.0 -0.0
+8      1.0  1.0  1.0  1.0  1.0  1.0  1.0
+9      1.0  1.0  1.0  1.0  1.0  1.0  1.0
+10     1.0  1.0  1.0  1.0  1.0  1.0  1.0
+11     1.0  1.0  1.0  1.0  1.0  1.0  1.0
+12     1.0  1.0  1.0  1.0  1.0  1.0 -0.0
+ANC:2  1.0  1.0  1.0  1.0  1.0  1.0 -0.0
+ANC:1  1.0  1.0  1.0  1.0  1.0  1.0  1.0
+ANC:3  1.0  1.0  1.0  1.0  1.0  1.0  1.0
+C COLUMNS Index(['a', 'b', 'c', 'd', 'e', 'f', 'g'], dtype='object')
+                   a              b              c              d              e              f              g
+0         660.881923     612.952182      33.734310      -4.646116     276.838768      -4.138660      -4.523922
+1          90.977416      -4.558387      -2.034848      21.192124     555.121458       0.000000      -2.269314
+2          -4.591426     740.132624     224.996173     708.399318     281.687684       0.000000      -4.497071
+3         571.895109     315.903730      -4.523922      -4.515070     253.000215     727.549231       0.000000
+4         624.083942     580.576206     144.411102     271.392859     555.594543      -4.336800      -4.487919
+5           4.371841     133.731452      -4.549908     595.725565       0.000000       0.000000      -4.430743
+6          71.398577     112.479010      17.010203      19.940595     253.000215      -2.250896      -4.583294
+7          -1.971174     384.663802     605.780551     658.569796      57.031138     748.244845      -4.420814
+8         251.617457       4.412952      33.624645      15.683050      19.712699     667.182541      35.020412
+9         588.510827     535.372145     344.511290     454.793075     536.859333     637.877946       0.849907
+10         28.969182     257.742453      -4.420814     251.297882     613.994685     341.504903     474.291370
+11         -4.487919     273.674367      -4.400592      70.557195      -1.813373      11.822254     605.384194
+12        487.553917     429.330730     844.833618     764.206005     661.401391     787.452312      -4.497071
+ANC:2  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000 -100000.000000
+ANC:1  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000
+ANC:3  100000.000000  100000.000000  100000.000000  100000.000000      -0.000010  100000.000000  100000.000000
+DELETION DETECTED ANC:3 e
+---------------------------------------------------------------- EPSILON
+MIXED MUTS FOR STATE 1: ['h', 'i', 'j', 'k', 'l']
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, instruction set [SSE2|AVX]
+Thread count: 4 physical cores, 4 logical processors, using up to 4 threads
+
+Optimize a model with 3040 rows, 905 columns and 7560 nonzeros
+Model fingerprint: 0xb22e791c
+Variable types: 0 continuous, 905 integer (905 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [7e-01, 7e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0000000
+Presolve time: 0.01s
+Presolved: 3040 rows, 905 columns, 7560 nonzeros
+Variable types: 0 continuous, 905 integer (905 binary)
+
+Root relaxation: objective 1.227543e+04, 159 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    12275.433730 12275.4337  0.00%     -    0s
+
+Explored 1 nodes (159 simplex iterations) in 0.02 seconds (0.01 work units)
+Thread count was 4 (of 4 available processors)
+
+Solution count 2: 12275.4 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.227543373012e+04, best bound 1.227543373012e+04, gap 0.0000%
+Optimized B --------------------
+      h    i    j    k    l
+13  1.0 -0.0  0.0 -0.0 -0.0
+14  1.0 -0.0 -0.0 -0.0 -0.0
+15  1.0 -0.0 -0.0 -0.0 -0.0
+16 -0.0 -0.0 -0.0 -0.0 -0.0
+17  1.0 -0.0 -0.0 -0.0 -0.0
+18  1.0  1.0 -0.0 -0.0 -0.0
+19  1.0  1.0 -0.0 -0.0 -0.0
+20  1.0  1.0 -0.0 -0.0 -0.0
+21  1.0 -0.0 -0.0 -0.0 -0.0
+22  1.0  1.0 -0.0 -0.0 -0.0
+23  1.0  0.0  1.0 -0.0 -0.0
+24  1.0 -0.0  1.0 -0.0 -0.0
+25  1.0 -0.0  1.0 -0.0 -0.0
+26  1.0 -0.0  1.0 -0.0 -0.0
+27  1.0 -0.0 -0.0 -0.0 -0.0
+28  1.0 -0.0  1.0 -0.0 -0.0
+29  1.0 -0.0  1.0 -0.0 -0.0
+30  1.0 -0.0 -0.0 -0.0 -0.0
+31  1.0 -0.0 -0.0  1.0 -0.0
+32  1.0 -0.0 -0.0 -0.0 -0.0
+33  1.0 -0.0 -0.0  1.0 -0.0
+34  1.0 -0.0 -0.0 -0.0 -0.0
+35  1.0 -0.0 -0.0 -0.0 -0.0
+36 -0.0 -0.0 -0.0 -0.0 -0.0
+37  1.0 -0.0 -0.0 -0.0  1.0
+C COLUMNS Index(['h', 'i', 'j', 'k', 'l'], dtype='object')
+             h           i           j           k          l
+13   59.357570   -4.566776   -2.358670   -4.440553  -4.469301
+14    0.677629   -4.532678   -2.175284   -4.420814  -4.771208
+15  292.711361   -4.487919   -2.116423   -4.566776  -2.232288
+16    0.000000   -4.469301   -2.096370   -4.523922  -4.515070
+17  293.378161   -4.549908   -4.668432   -4.523922  -4.515070
+18  637.877946  471.491223   -4.369305   -4.487919  -4.558387
+19    4.058023  695.312919   -4.440553   -4.575078  -4.638533
+20  469.781861  339.008293   -4.615332   -2.175284  -4.623142
+21   33.408603   -4.515070   -4.478663   -4.523922  -4.506121
+22  510.490869  152.899668   -4.549908   -4.497071  -4.506121
+23  463.926155    0.000000  315.241188   -4.515070  -4.459830
+24  140.174502   -4.591426  719.594449   -4.478663  -4.506121
+25   -4.420814   -4.523922  528.094387   -4.430743  -4.575078
+26  510.490869   -4.558387  722.868100   -4.523922  -4.532678
+27  201.492869   -4.541339   -4.379865   -4.440553  -2.076093
+28   55.356487   -4.410765  667.760728   -2.136256  -4.623142
+29  610.290410   -4.523922  109.220748   -4.523922   0.000000
+30  643.351474   -4.575078   -4.487919   -2.269314  -4.532678
+31    0.000000   -2.443775   -4.478663  660.881923  -2.393201
+32  424.650505   -4.379865   -4.430743   -2.096370  -2.116423
+33  677.595854   -4.532678   -4.400592   56.207954  -4.541339
+34   41.767831   -4.469301   -4.469301   -4.487919   0.000000
+35  748.244845   -4.358609   -4.591426   -4.575078  -4.497071
+36   -4.532678   -4.369305   -4.566776   -4.515070  -4.630875
+37    1.263884   -4.623142   -4.478663   -4.558387  20.925258
+MIXED MUTS FOR STATE 2: ['m', 'n', 'o', 'p', 'q']
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, instruction set [SSE2|AVX]
+Thread count: 4 physical cores, 4 logical processors, using up to 4 threads
+
+Optimize a model with 4840 rows, 1430 columns and 12060 nonzeros
+Model fingerprint: 0xf1d87186
+Variable types: 0 continuous, 1430 integer (1430 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [2e+00, 8e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0000000
+Presolve time: 0.02s
+Presolved: 4840 rows, 1430 columns, 12060 nonzeros
+Variable types: 0 continuous, 1430 integer (1430 binary)
+
+Root relaxation: objective 2.027809e+04, 229 iterations, 0.01 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    20278.090968 20278.0910  0.00%     -    0s
+
+Explored 1 nodes (229 simplex iterations) in 0.04 seconds (0.02 work units)
+Thread count was 4 (of 4 available processors)
+
+Solution count 2: 20278.1 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 2.027809096845e+04, best bound 2.027809096845e+04, gap 0.0000%
+Optimized B --------------------
+      m    n    o    p    q
+38  1.0 -0.0 -0.0 -0.0 -0.0
+39 -0.0 -0.0 -0.0 -0.0 -0.0
+40  1.0 -0.0 -0.0 -0.0 -0.0
+41 -0.0 -0.0 -0.0 -0.0 -0.0
+42  1.0 -0.0 -0.0 -0.0 -0.0
+43  1.0 -0.0 -0.0 -0.0 -0.0
+44  1.0 -0.0 -0.0 -0.0 -0.0
+45  1.0 -0.0 -0.0 -0.0 -0.0
+46 -0.0 -0.0 -0.0 -0.0 -0.0
+47  1.0 -0.0 -0.0 -0.0 -0.0
+48  1.0 -0.0 -0.0 -0.0 -0.0
+49  1.0 -0.0 -0.0 -0.0 -0.0
+50  1.0 -0.0 -0.0 -0.0 -0.0
+51 -0.0 -0.0 -0.0 -0.0 -0.0
+52  1.0  1.0 -0.0 -0.0 -0.0
+53  1.0  1.0 -0.0 -0.0 -0.0
+54  1.0  1.0 -0.0 -0.0 -0.0
+55  1.0  1.0 -0.0 -0.0 -0.0
+56  1.0  1.0 -0.0 -0.0 -0.0
+57 -0.0 -0.0 -0.0 -0.0 -0.0
+58  1.0 -0.0 -0.0 -0.0 -0.0
+59  1.0 -0.0  1.0  0.0 -0.0
+60  1.0 -0.0  1.0 -0.0 -0.0
+61  1.0 -0.0  1.0 -0.0 -0.0
+62  1.0 -0.0  1.0 -0.0 -0.0
+63  1.0 -0.0  1.0 -0.0 -0.0
+64  1.0 -0.0  1.0 -0.0 -0.0
+65  1.0 -0.0 -0.0 -0.0 -0.0
+66  1.0 -0.0 -0.0  1.0 -0.0
+67  1.0 -0.0 -0.0  1.0 -0.0
+68  1.0 -0.0 -0.0  1.0 -0.0
+69  1.0 -0.0 -0.0  1.0 -0.0
+70  1.0 -0.0 -0.0  1.0 -0.0
+71  1.0 -0.0 -0.0  1.0 -0.0
+72  1.0 -0.0 -0.0 -0.0  1.0
+73  1.0 -0.0 -0.0 -0.0  1.0
+74  1.0 -0.0 -0.0 -0.0 -0.0
+75  1.0 -0.0 -0.0 -0.0 -0.0
+76  1.0 -0.0 -0.0 -0.0  1.0
+77  1.0 -0.0 -0.0 -0.0  1.0
+C COLUMNS Index(['m', 'n', 'o', 'p', 'q'], dtype='object')
+             m           n           o           p           q
+38  617.187116   -4.591426   -4.532678   -4.506121   -4.440553
+39   -4.279670   -4.450248   -4.255696   -1.859861   -4.615332
+40  603.393828   -4.515070   -4.450248   -4.599475   -4.440553
+41   -4.532678   -4.440553   -4.566776   -4.630875   -4.630875
+42  539.289751   -4.430743   -4.450248   -4.369305   -4.575078
+43  734.447684   -4.661064   -4.469301   -4.615332   -4.506121
+44  176.217865   -4.532678   -4.532678   -4.336800   -4.459830
+45  643.378987   -4.430743   -4.630875   -4.638533   -4.583294
+46   -4.532678   -4.506121   -2.096370   -4.583294   -4.566776
+47  644.775119   -4.558387   -4.566776   -4.558387   -4.430743
+48  507.373200   -1.971174   -4.469301   -4.497071   -4.638533
+49  575.462801   -4.420814   -4.506121   -4.358609   -2.250896
+50   16.388250   -4.549908   -4.459830   -4.591426   -4.487919
+51   -4.336800   -4.532678   -4.549908   -4.583294   -4.487919
+52   72.980067  672.364897   -4.515070   -4.410765   -4.420814
+53  550.484995  547.361573   -4.523922   -4.450248   -4.532678
+54   64.218057  359.440913   -4.575078   -4.515070   -4.497071
+55  336.925824  718.870900   -4.583294   -4.487919   -4.638533
+56  274.038827  686.799551   -4.420814   -4.523922   -4.487919
+57    0.000000   -4.515070   -4.532678   -4.583294   -4.630875
+58  394.178223   -2.509045   -4.459830   -4.668432   -4.515070
+59  618.588587   -4.379865   11.257504    0.000000   -4.420814
+60  221.842057   -4.566776  715.979037   -4.291409   -4.358609
+61   16.168911   -4.459830  283.164624   -4.558387   -4.575078
+62  185.808976   -4.623142  633.489809   -4.302987   -4.459830
+63   -2.213486   -2.194486   28.582584   -4.549908   -4.558387
+64    3.733465   -4.615332  693.058310   -4.506121   -4.541339
+65  131.339644   -4.690123   -4.566776   -4.583294   -4.497071
+66  487.256824   -4.523922   -4.523922  686.160407   -4.459830
+67   12.649613   -4.532678   -4.515070  156.850191   -4.549908
+68   23.589362   -4.532678   -4.558387  702.201443   -4.497071
+69  762.042337   -4.549908   -4.506121  625.979771   -4.591426
+70  415.684209   -4.515070   -4.459830  715.979037   -4.314409
+71    0.000000   -4.532678   -4.646116  591.655185   -4.358609
+72   47.371842   -4.506121   -2.305592   -4.450248   73.932952
+73   77.830429   -4.506121   -4.566776   -4.440553  181.276620
+74    4.095862   -4.549908    0.000000   -4.575078   -4.243451
+75  637.877946    0.000000    0.000000   -4.704252   -4.591426
+76   91.703313   -4.697220   -4.515070   -4.558387   20.255208
+77  665.467295   -4.440553   -4.497071   -4.591426   21.852672
+MIXED MUTS FOR STATE 3: ['r', 's', 't']
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (linux64)
+
+CPU model: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, instruction set [SSE2|AVX]
+Thread count: 4 physical cores, 4 logical processors, using up to 4 threads
+
+Optimize a model with 804 rows, 273 columns and 1998 nonzeros
+Model fingerprint: 0x6fa438d2
+Variable types: 0 continuous, 273 integer (273 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [8e-01, 8e+02]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Found heuristic solution: objective -0.0000000
+Presolve time: 0.00s
+Presolved: 804 rows, 273 columns, 1998 nonzeros
+Variable types: 0 continuous, 273 integer (273 binary)
+
+Root relaxation: objective 1.057678e+04, 66 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0    10576.779363 10576.7794  0.00%     -    0s
+
+Explored 1 nodes (66 simplex iterations) in 0.01 seconds (0.00 work units)
+Thread count was 4 (of 4 available processors)
+
+Solution count 2: 10576.8 -0 
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.057677936264e+04, best bound 1.057677936264e+04, gap 0.0000%
+Optimized B --------------------
+      r    s    t
+78  1.0 -0.0 -0.0
+79  1.0 -0.0 -0.0
+80  1.0 -0.0 -0.0
+81  1.0  0.0 -0.0
+82  1.0 -0.0 -0.0
+83  1.0 -0.0 -0.0
+84  1.0 -0.0 -0.0
+85  1.0 -0.0 -0.0
+86 -0.0 -0.0 -0.0
+87  1.0  1.0 -0.0
+88  1.0  1.0 -0.0
+89  1.0  1.0 -0.0
+90  1.0 -0.0 -0.0
+91  1.0  1.0 -0.0
+92  1.0  1.0 -0.0
+93  1.0  1.0 -0.0
+94 -0.0 -0.0 -0.0
+95  1.0 -0.0 -0.0
+96  1.0 -0.0 -0.0
+97  1.0 -0.0  1.0
+98  1.0 -0.0  1.0
+99  1.0 -0.0  1.0
+C COLUMNS Index(['r', 's', 't'], dtype='object')
+             r           s           t
+78  679.262602   -4.646116   -4.566776
+79  686.160407   -4.549908   -4.291409
+80  605.780551   -4.515070   -4.231029
+81  125.418173   -4.523922    0.000000
+82  624.083942   -4.630875   -4.532678
+83  425.953545   -4.591426   -4.515070
+84  163.703537   -4.459830   -4.379865
+85  503.572795   -2.410219   -4.515070
+86   -4.615332   -4.541339   -2.492951
+87  461.844516    3.874290   -4.575078
+88   -4.487919  176.753570   -4.566776
+89   -4.615332  603.393828   -4.523922
+90  659.072899    0.000000   -4.653626
+91    0.000000  466.948268   -4.607443
+92  686.160407  412.418596   -4.506121
+93   43.914803    1.196108   -4.450248
+94   -4.583294   -2.410219   -4.325679
+95  617.187116   -4.583294   -4.515070
+96  180.382961   -2.323460   -2.116423
+97  796.537438   -4.430743  592.628903
+98    0.820449   -4.440553  465.419079
+99    0.000000   -4.630875  603.393828
+All DELETIONS [('ANC:3', 'e')]
+Index(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+       'ANC:2', 'ANC:1', 'ANC:3'],
+      dtype='object')
+Index(['13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24',
+       '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36',
+       '37'],
+      dtype='object')
+Index(['38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49',
+       '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61',
+       '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73',
+       '74', '75', '76', '77'],
+      dtype='object')
+Index(['78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89',
+       '90', '91', '92', '93', '94', '95', '96', '97', '98', '99'],
+      dtype='object')
+  ---- ('ANC:3', 'e')
+    c  a_v  a_t  b_v  b_t  c_v  c_t  d_v  d_t  e_v  e_t  ...  o_t  p_v  p_t  q_v  q_t  r_v  r_t  s_v  s_t  t_v  t_t
+0   0   99  104   92   97   10  103    0  116   51  106  ...  106    0  102    0  107    0   92    0  111    0   81
+1   0   21  102    0  105    1   91    7   90   81   81  ...   95    0  116    0  110    0  103    0   98    0  115
+2   0    0  109  111  117   43  103  105  108   51   99  ...   90    0  106    0   99    1  103    0  116    0   90
+3   0   86   91   55   92    0  101    0  100   48  112  ...  113    0   90    0   92    0   99    0    0    0    0
+4   0   91   91   92  112   30   99   48   85   89  112  ...    0    1  106    0   97    0   86    0   93    1  101
+.. ..  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...  ...
+95  3   91   91   18   98  110  110   82  114    0    0  ...  106    0   74    0  107   90   90    0  108    0  100
+96  3   20  109   45  107   95   98   96  101    0  107  ...  101    0  104    0  126   36  102    1  106    1   95
+97  3    4   92   92   92   35  103  124  124    0   89  ...   99    0  100    0   97  116  116    0   91   93  110
+98  3    0   94   31   92  102  102    3   95    0  111  ...  109    0   93    0   93    2   99    0   92   75   96
+99  3    0   92    0   98   72   77    6   99    0  106  ...  100    0   90    0  106    0    0    0  114   88   88
+
+[100 rows x 41 columns]
+    a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t
+0   1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+1   1  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+2   1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+3   1  1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+4   1  1  1  1  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+.. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. .. ..
+95  1  1  1  1  0  1  1  0  0  0  0  0  0  0  0  0  0  1  0  0
+96  1  1  1  1  0  1  1  0  0  0  0  0  0  0  0  0  0  1  0  0
+97  1  1  1  1  0  1  1  0  0  0  0  0  0  0  0  0  0  1  0  1
+98  1  1  1  1  0  1  1  0  0  0  0  0  0  0  0  0  0  1  0  1
+99  1  1  1  1  0  1  1  0  0  0  0  0  0  0  0  0  0  1  0  1
+
+[100 rows x 20 columns]
+Outputting edgelist to example/output12042023ALL.edgelist
+Outputting DOT file to example/output12042023ALL.dot
+dot - graphviz version 2.40.1 (20161225.0304)
+Using render: cairo:cairo
+Using device: pdf:cairo:cairo
+libdir = "/usr/lib/x86_64-linux-gnu/graphviz"
+Activated plugin library: libgvplugin_dot_layout.so.6
+Using layout: dot:dot_layout
+The plugin configuration file:
+        /usr/lib/x86_64-linux-gnu/graphviz/config6a
+                was successfully loaded.
+    render      :  cairo dot dot_json fig gd json json0 map mp pic pov ps svg tk vml vrml xdot xdot_json
+    layout      :  circo dot fdp neato nop nop1 nop2 osage patchwork sfdp twopi
+    textlayout  :  textlayout
+    device      :  bmp canon cmap cmapx cmapx_np dot dot_json eps fig gd gd2 gif gtk gv ico imap imap_np ismap jpe jpeg jpg json json0 mp pdf pic plain plain-ext png pov ps ps2 svg svgz tif tiff tk vml vmlz vrml wbmp x11 xdot xdot1.2 xdot1.4 xdot_json xlib
+    loadimage   :  (lib) bmp eps gd gd2 gif ico jpe jpeg jpg png ps svg xbm
+pack info:
+  mode   undefined
+  size   0
+  flags  0
+  margin 8
+pack info:
+  mode   node
+  size   0
+  flags  0
+fontname: "helvetica" resolved to: (ps:pango  Nimbus Sans L,  REGULAR) (PangoCairoFcFont) "Nimbus Sans L, Regular" /usr/share/fonts/X11/Type1/n019003l.pfb
+network simplex:  124 nodes 123 edges maxiter=2147483647 balance=1
+network simplex: 124 nodes 123 edges 0 iter 0.00 sec
+Maxrank = 22, minrank = 0
+mincross: pass 0 iter 0 trying 0 cur_cross 0 best_cross 0
+mincross g: 0 crossings, 0.00 secs.
+network simplex:  493 nodes 716 edges maxiter=2147483647 balance=2
+network simplex: 100 
+network simplex: 493 nodes 716 edges 171 iter 0.01 sec
+routesplines: 123 edges, 615 boxes 0.00 sec
+Using render: cairo:cairo
+Using device: pdf:cairo:cairo
+Warning: transparent is not a known color.
+Warning: 0 is not a known color.
+gvRenderJobs g: 0.02 secs.
