@@ -1,0 +1,23 @@
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet$ git clone https://github.com/CSTE7007/scarlet.git
+Cloning into 'scarlet'...
+remote: Enumerating objects: 266, done.
+remote: Counting objects: 100% (266/266), done.
+remote: Compressing objects: 100% (128/128), done.
+remote: Total 266 (delta 107), reused 244 (delta 99), pack-reused 0
+Receiving objects: 100% (266/266), 264.73 KiB | 1.09 MiB/s, done.
+Resolving deltas: 100% (107/107), done.
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet$ cd scarlet/
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ code .
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git config user.name "CSTE7007"
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git config user.email "mikparadox@outlook.com"
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git config --list --show-origin
+file:.git/config        core.repositoryformatversion=0
+file:.git/config        core.filemode=true
+file:.git/config        core.bare=false
+file:.git/config        core.logallrefupdates=true
+file:.git/config        remote.origin.url=https://github.com/CSTE7007/scarlet.git
+file:.git/config        remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+file:.git/config        branch.master.remote=origin
+file:.git/config        branch.master.merge=refs/heads/master
+file:.git/config        user.name=CSTE7007
+file:.git/config        user.email=mikparadox@outlook.com
