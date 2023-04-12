@@ -1,0 +1,54 @@
+digraph g{
+ratio=1.5
+nodesep=0
+graph [fontname = "helvetica", colorscheme=set19];
+node [fontname = "helvetica", colorscheme=set19];
+edge [fontname = "helvetica", colorscheme=set19];
+"MUT:a" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:b" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:c" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:d" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:e" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:f" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:g" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"MUT:h" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"MUT:i" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"MUT:j" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"MUT:k" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"MUT:l" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"MUT:m" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"MUT:n" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"MUT:o" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"MUT:p" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"MUT:q" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"MUT:r" [label = "", color = 3, height = 0.3, width = 0.3, shape=point]; 
+"MUT:s" [label = "", color = 3, height = 0.3, width = 0.3, shape=point]; 
+"MUT:t" [label = "", color = 3, height = 0.3, width = 0.3, shape=point]; 
+"ROOT:0" [label = "", color = 0, height = 0.3, width = 0.3, shape=point]; 
+"ROOT:1" [label = "", color = 1, height = 0.3, width = 0.3, shape=point]; 
+"ROOT:2" [label = "", color = 2, height = 0.3, width = 0.3, shape=point]; 
+"ROOT:3" [label = "", color = 3, height = 0.3, width = 0.3, shape=point]; 
+"ROOT:0" -> "MUT:a" [penwidth=3, label = "a", fontsize = 30, color="0;0.5:0"];
+"MUT:a" -> "MUT:d" [penwidth=3, label = "d", fontsize = 30, color="0;0.5:0"];
+"MUT:d" -> "MUT:e" [penwidth=3, label = "e", fontsize = 30, color="0;0.5:0"];
+"MUT:e" -> "MUT:b" [penwidth=3, label = "b", fontsize = 30, color="0;0.5:0"];
+"MUT:b" -> "MUT:c" [penwidth=3, label = "c", fontsize = 30, color="0;0.5:0"];
+"MUT:c" -> "MUT:f" [penwidth=3, label = "f", fontsize = 30, color="0;0.5:0"];
+"MUT:f" -> "MUT:g" [penwidth=3, label = "g", fontsize = 30, color="0;0.5:0"];
+"MUT:f" -> "ROOT:2" [label = "", fontsize=30,fontcolor="#8b0000", penwidth=3, color = "0;0.5:2"];
+"MUT:g" -> "ROOT:1" [label = "", fontsize=30,fontcolor="#8b0000", penwidth=3, color = "0;0.5:1"];
+"MUT:g" -> "ROOT:3" [label = "LOSS: e", fontsize=30,fontcolor="#8b0000", penwidth=3, color = "0;0.5:3"];
+"ROOT:1" -> "MUT:h" [penwidth=3, label = "h", fontsize = 30, color="1;0.5:1"];
+"MUT:h" -> "MUT:i" [penwidth=3, label = "i", fontsize = 30, color="1;0.5:1"];
+"MUT:h" -> "MUT:j" [penwidth=3, label = "j", fontsize = 30, color="1;0.5:1"];
+"MUT:h" -> "MUT:k" [penwidth=3, label = "k", fontsize = 30, color="1;0.5:1"];
+"MUT:h" -> "MUT:l" [penwidth=3, label = "l", fontsize = 30, color="1;0.5:1"];
+"ROOT:2" -> "MUT:m" [penwidth=3, label = "m", fontsize = 30, color="2;0.5:2"];
+"MUT:m" -> "MUT:n" [penwidth=3, label = "n", fontsize = 30, color="2;0.5:2"];
+"MUT:m" -> "MUT:o" [penwidth=3, label = "o", fontsize = 30, color="2;0.5:2"];
+"MUT:m" -> "MUT:p" [penwidth=3, label = "p", fontsize = 30, color="2;0.5:2"];
+"MUT:m" -> "MUT:q" [penwidth=3, label = "q", fontsize = 30, color="2;0.5:2"];
+"ROOT:3" -> "MUT:r" [penwidth=3, label = "r", fontsize = 30, color="3;0.5:3"];
+"MUT:r" -> "MUT:s" [penwidth=3, label = "s", fontsize = 30, color="3;0.5:3"];
+"MUT:r" -> "MUT:t" [penwidth=3, label = "t", fontsize = 30, color="3;0.5:3"];
+}
