@@ -1594,3 +1594,14 @@ Warning: transparent is not a known color.
 Warning: 0 is not a known color.
 gvRenderJobs g: 0.01 secs.
 (base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ 
+git add .
+(base) user@saqib-HP-Pro-3340-MT:~/Desktop/12042023/ForkingScarlet/scarlet$ git commit -m "run command for plotting style COUNT" 
+[master 2d631f5] run command for plotting style COUNT
+ 8 files changed, 1037 insertions(+)
+ create mode 100644 example/output12042023COUNT.B
+ create mode 100644 example/output12042023COUNT.B_ancestor
+ create mode 100644 example/output12042023COUNT.LL
+ create mode 100644 example/output12042023COUNT.T
+ create mode 100644 example/output12042023COUNT.dot
+ create mode 100644 example/output12042023COUNT.edgelist
+ create mode 100644 example/output12042023COUNT.pdf
