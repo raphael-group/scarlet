@@ -148,7 +148,7 @@ def write_out_tree(global_tree, tree_file):
 
 def read_inputs():
     if len(sys.argv) < 5:
-        print "USAGE: plot_tree.py output_file.B_ancestor [CN Tree file] [plotting style] [output prefix]"
+        print("USAGE: plot_tree.py output_file.B_ancestor [CN Tree file] [plotting style] [output prefix]")
     output_file = sys.argv[1]
     tree_file = sys.argv[2]
     plotting_style = sys.argv[3].upper()
@@ -247,12 +247,12 @@ if __name__ == "__main__":
     global_tree, subtrees, vertex_colors = construct_full_tree(result_matrix, cn_tree)
 
     tree_filename = "{}.edgelist".format(output_prefix)
-    print "Outputting edgelist to {}".format(tree_filename)
+    print("Outputting edgelist to {}".format(tree_filename))
     write_out_tree(global_tree, tree_filename)
     cn_states = result_matrix['CN'].unique()
     mutation_losses = identify_mutation_losses(result_matrix)
     dot_filename = "{}.dot".format(output_prefix)
-    print "Outputting DOT file to {}".format(dot_filename)
+    print("Outputting DOT file to {}".format(dot_filename))
     output_dot_file(output_prefix, result_matrix, global_tree, vertex_colors, cn_states, draw_leaves, mutation_losses)
 
 
