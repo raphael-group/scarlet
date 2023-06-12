@@ -15,6 +15,8 @@ def solve_model(C):
         vals = []
         # Create a new model
         m = Model("mip1")
+        # Add Solver Time Limit
+        m.setParam('TimeLimit', 5*60*60)
 
         Bs = {}
         # Create mutation matrix
@@ -22,7 +24,7 @@ def solve_model(C):
             for a in C.columns:
                 Bs[(p,a)] = m.addVar(vtype=GRB.BINARY, name="b_{}_{}".format(p,a))
                 vals.append((p,a))
-
+        
         for i,a in enumerate(C.columns):
             for b in C.columns[i+1:]:
 
@@ -70,16 +72,34 @@ def solve_model(C):
 
         # Set objective
         objn = sum(Bs[(p,a)]*C.loc[p][a] for p,a in vals)
-
         m.setObjective(objn, GRB.MAXIMIZE)
 
         m.optimize()
 
         B = C.copy()
+
         for v in m.getVars():
             if v.varName.startswith('b'):
                 try:
-                    p,a = v.varName.split('_')[1:]
+                    ''' 
+                    if v.varName.startswith('b_ANC:'):                                                                                                   
+                        p = '_'.join(v.varName.split('_')[1:3])                                                                                          
+                        a = '_'.join(v.varName.split('_')[3:])                                                                                           
+                     else:                                                                                                                                
+                        p = '_'.join(v.varName.split('_')[1:4])                                                                                          
+                        a = '_'.join(v.varName.split('_')[4:])       
+                    '''
+                    if v.varName.startswith('b_ANC:'):
+                        filter_var = v.varName.split(':')[1]
+                        p = '_'.join(filter_var.split('_')[0:1])
+                        a = '_'.join(filter_var.split('_')[1:])
+                        if p.isdigit():
+                            p = B.index[int(p)]
+                    else:
+                        filter_var = v.varName.split('_',1)[1]
+                        p = '_'.join(filter_var.split('_')[0:3])
+                        a = '_'.join(filter_var.split('_')[3:]) 
+                        #p,a = v.varName.split('_')[1:]
                 except:
                     print(v.varName)
                     raise
@@ -143,15 +163,14 @@ def calculate_C(c, sigmas, DPs, BC):
         print("----------------- DESCS", descs)
     except KeyError:
         descs=[]
-
+    
     for i,D in enumerate(descs):
         child, desc = D
-        print(child)
+        #print(child)
         d = pd.DataFrame([[desc_scores(desc[a]) for a in mixed_muts]], columns = mixed_muts,\
-            index = ['ANC:{}'.format(child)])
+                index = ['ANC:{}'.format(child)])
         C = C.append(d)
 
-        
     #C = C.reset_index(drop = True)
     return C
         
@@ -181,6 +200,7 @@ def get_descendent_profiles(sigmas, mutations, S, L):
         DPs[parent].append((child, descendent_profile)) 
         #print("DPS")
         #print(child, descendent_profile)
+
 
     return DPs 
 
@@ -259,8 +279,7 @@ if __name__ == '__main__':
     input_file = "test_data/BC.csv"
     state_tree = "test_data/S.csv"
     BC, S, L = read_in_files(input_file, state_tree)
-    mutations = set(sorted([v.split('_')[0] for v in BC.columns[1:]]))
-
+    mutations = set(sorted([v.rsplit('_', 1)[0] for v in BC.columns[1:]]))
     sigmas = get_optimal_sigma(S,BC)
 
     DPs = get_descendent_profiles(sigmas, mutations)
@@ -269,5 +288,4 @@ if __name__ == '__main__':
     C = calculate_C(1, sigmas, DPs)
 
     B = solve_model(C)
-
     #print(B)

@@ -11,6 +11,7 @@ def correct_ternary_matrix(B, S, BC, deletions):
     for deletion in deletions:
         print("  ----", deletion)
         child, mut = deletion
+        #print('DELETION: ', deletion, child, mut)
         child = int(child.replace('ANC:', ''))
         # calculate the set of copy-number states affected by the deletion
         # not the most efficient way to do this but S should be small
@@ -31,26 +32,32 @@ def correct_ternary_matrix(B, S, BC, deletions):
 def main():
     BC_file = sys.argv[1]
     SL_file = sys.argv[2]
-    output_file = sys.argv[3]
+    
+    #TODO: Add input file containing list of germline mutations (SNPs)
+    SNP_file = sys.argv[3]
+    
+    output_file = sys.argv[4]
 
-    BC, S, L = read_in_files(BC_file, SL_file)
-    mutations = sorted(set([v.split('_')[0] for v in BC.columns[1:]]))
-    sigmas, dels = get_optimal_sigma(S,BC,L)
+    BC, S, L, SNP = read_in_files(BC_file, SL_file, SNP_file)
+    
+    mutations = sorted(set([v.rsplit('_', 1)[0] for v in BC.columns[1:]]))
+    sigmas, dels = get_optimal_sigma(S,BC,L,SNP)
     DPs = get_descendent_profiles(sigmas, mutations, S, L)
 
     all_deletions = dels
     cn_states = BC['c'].unique()
     Bs = {}
+    
     for i in cn_states:
-
+        
         C= calculate_C(i, sigmas, DPs, BC)
-
+        
         B, deletions = solve_model(C)
+
         Bs[i]=B
         all_deletions += deletions
 
     print("All DELETIONS", all_deletions)
-
 
     result = assemble_mutation_matrix(Bs, sigmas, BC, mutations)
     result_with_ancestors = assemble_mutation_matrix_with_ancestors(Bs, sigmas, BC, mutations)
