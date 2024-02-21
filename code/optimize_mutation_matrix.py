@@ -149,7 +149,7 @@ def calculate_C(c, sigmas, DPs, BC):
         print(child)
         d = pd.DataFrame([[desc_scores(desc[a]) for a in mixed_muts]], columns = mixed_muts,\
             index = ['ANC:{}'.format(child)])
-        C = C.append(d)
+        C = pd.concat([C,d])
 
         
     #C = C.reset_index(drop = True)
